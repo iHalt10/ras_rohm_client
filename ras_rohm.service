@@ -1,0 +1,15 @@
+[Unit]
+Description=ras_rohm
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3/ /usr/local/ras_rohm_client-master/client.py
+ExecStop=/bin/kill -INT ${MAINPID}
+Restart=always
+TimeoutSec=300
+StandardOutput=journal
+StandardFrror=journal
+
+[Install]
+WantedBy=multi-user.target
+
